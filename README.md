@@ -35,7 +35,7 @@ gzip -d -c render.pth.gz > render.pth
 ### Prepare Your Video
 Next, prepare your video using the data_preparation script. Replace YOUR_VIDEO_PATH with the path to your video:
 ```bash
-python data_preparation YOUR_VIDEO_PATH
+python data_preparation.py YOUR_VIDEO_PATH
 ```
 The result (video_info) will be stored in the ./video_data directory.
 ### Run with Audio File
