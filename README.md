@@ -24,7 +24,11 @@ Install pytorch
 ```
 conda install pytorch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
-
+If needed, install portaudio otherwise inference will fail without errors (caused by ffmpeg)
+```
+sudo apt-get install libportaudio2
+sudo apt-get install libasound-dev
+```
 ### Unzip the Model File
 First, navigate to the `checkpoint` directory and unzip the model file:
 ```bash
