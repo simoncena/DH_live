@@ -141,8 +141,8 @@ def ExtractFromVideo(video_path, circle = False):
 
 def CirculateVideo(video_in_path, video_out_path, export_imgs = False):
     # 1 视频转换为25FPS, 并折叠循环拼接
-    front_video_path = "front.mp4"
-    back_video_path = "back.mp4"
+    front_video_path = "data/front.mp4"
+    back_video_path = "data/back.mp4"
     # ffmpeg_cmd = "ffmpeg -i {} -r 25 -ss 00:00:00 -t 00:02:00 -an -loglevel quiet -y {}".format(video_in_path, front_video_path)
     ffmpeg_cmd = "ffmpeg -i {} -r 25 -an -loglevel quiet -y {}".format(video_in_path, front_video_path)
     os.system(ffmpeg_cmd)
