@@ -1,4 +1,4 @@
-# Real-time Live Streaming Digital Human
+# Real-time Live Streaming Digital Human - DH_Live - Update
 # 实时直播数字人  [bilibili video](https://www.bilibili.com/video/BV1Ppv1eEEgj/?vd_source=53601feee498369e726af7dbc2dae349)
 ### Video Example
 
@@ -14,11 +14,23 @@ This project is a real-time live streaming digital human powered by few-shot lea
 - **Few-shot Learning**: The system is capable of learning from a few examples to generate realistic responses.
 ## Usage
 
+### Create conda environment
+```
+conda create --name dh_live python=3.10
+conda activate dh_live
+pip install -r requirements.txt
+```
+Install pytorch
+```
+conda install pytorch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 pytorch-cuda=12.1 -c pytorch -c nvidia
+```
+
 ### Unzip the Model File
 First, navigate to the `checkpoint` directory and unzip the model file:
 ```bash
 cd checkpoint
-gzip -d -c render.pth.gz.001 > render.pth
+cat render.pth.gz.001 render.pth.gz.002 > render.pth.gz
+gzip -d -c render.pth.gz > render.pth
 ```
 ### Prepare Your Video
 Next, prepare your video using the data_preparation script. Replace YOUR_VIDEO_PATH with the path to your video:
