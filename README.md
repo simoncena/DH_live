@@ -28,6 +28,9 @@ If needed, install portaudio otherwise inference will fail without errors (cause
 ```
 sudo apt-get install libportaudio2
 sudo apt-get install libasound-dev
+
+conda uninstall ffmpeg  
+conda install -c conda-forge ffmpeg  
 ```
 ### Unzip the Model File
 First, navigate to the `checkpoint` directory and unzip the model file:
