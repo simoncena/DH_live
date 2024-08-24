@@ -8,6 +8,9 @@ import pickle
 device = "cuda" if torch.cuda.is_available() else "cpu"
 import pickle
 import os
+import librosa
+
+
 def pca_process(x):
     a = x.reshape(15, 30, 3)
     # a = pca.mean_.reshape(15,30,3)
@@ -81,15 +84,22 @@ class AudioModel:
         # print(self.__fbank_processed_index, self.__fbank.num_frames_ready, bs_real)
 
         frame = np.dot(bs_real[:6], self.pca_components_[:6]) + self.pca_mean_
-        # print(frame_index, frame.shape)
+        # print(frame_index, frame.shapepip)
         frame = frame.reshape(15, 30, 3).clip(0, 255).astype(np.uint8)
         self.__fbank_processed_index += 2
         return frame
 
     def interface_wav(self, wavpath):
-        rate, wav = wavfile.read(wavpath, mmap=False)
-        augmented_samples = wav
-        augmented_samples2 = augmented_samples.astype(np.float32, order='C') / 32768.0
+        # rate, wav = wavfile.read(wavpath, mmap=False)
+        # augmented_samples = wav
+        # augmented_samples2 = augmented_samples.astype(np.float32, order='C') / 32768.0
+
+        ori_audio, orig_sr = librosa.load(wavpath, sr=None)
+        # print(ori_audio.shape, orig_sr)
+        if orig_sr != 16000:
+            augmented_samples2 = librosa.resample(ori_audio, orig_sr=orig_sr, target_sr=16000)
+        else:
+            augmented_samples2 = ori_audio
         # print(augmented_samples2.shape, augmented_samples2.shape[0] / 16000)
 
         opts = knf.FbankOptions()
